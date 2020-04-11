@@ -1,0 +1,44 @@
+<div id="app">
+    <h1>{{ title }}</h1>
+    <img v-for="photo in photos" :src="photo.url" />
+    <button @click="atualizar()">Atualizar</button>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Vue Random Gallery',
+            numberOfPhotos: 4,
+            photos: []
+        },
+
+        created() {
+            for (let index = 1; index <= this.numberOfPhotos; index++) {
+                this.photos.push({ url: 'https://picsum.photos/200/200?random=' + index });
+            }
+        },
+
+        methods: {
+            atualizar() {
+                location.reload();
+            }
+        }
+    });
+</script>
+<style>
+    img {
+        width: 22%;
+        float: left;
+        margin: 1.5%;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
+
+    img:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+</style>
