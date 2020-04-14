@@ -1,17 +1,44 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Random Gallery</title>
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
-<body>    
+
+<body>
     <div id="app">
-        <h1>{{ title }}</h1>
-        <img v-for="photo in photos" :src="photo.url" />
-        <button @click="atualizar()">Atualizar</button>
+        <div class="d-flex flex-column justify-content-around" style="height: 100vh">
+            <div class="container">
+                <h1>{{ title }}</h1>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <img v-for="photo in photos" :src="photo.url" :alt="photo.alt" class="col-3" />
+                </div>
+                <div class="row justify-content-around mt-5">
+                    <button class="btn btn-primary" @click="atualizar()">Atualizar Fotos</button>
+                    <button class="btn btn-secondary">Apenas Favoritas</button>
+                    <button class="btn btn-success">Alterar o Tema</button>
+                </div>
+            </div>
+            <div class="container">
+                <p>Galeria de imagens aleatórias. Imagens são consumidas através de
+                    <a href="https://picsum.photos/ ">Picsum</a>.
+                    <br>
+                    Fonte hospedado no github: <a href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
+                </p>
+            </div>
+        </div>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,7 +1,5 @@
 img {
-    width: 22%;
-    float: left;
-    margin: 1.5%;
+    padding: 1%;
     -webkit-transform: scale(1);
     transform: scale(1);
     -webkit-transition: .3s ease-in-out;
