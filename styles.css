@@ -46,7 +46,21 @@ img {
 
 .photo-info > p:nth-child(2) {
     font-size: 0.9em;
-  }
+}
+
+.photo-options {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    opacity: 0.0;
+    width: 90%;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.photo-options i {
+    font-size: 3rem;
+    cursor: pointer;
+}
 
 .photo-frame:hover .transparent-box {
     background-color:rgba(0, 0, 0, 0.5);
@@ -59,5 +73,10 @@ img {
 
 .photo-frame:hover .photo-info {
     transform: translateY(-20px);
+    opacity: 1.0;
+}
+
+.photo-frame:hover .photo-options {
+    transform: translateY(20px);
     opacity: 1.0;
 }

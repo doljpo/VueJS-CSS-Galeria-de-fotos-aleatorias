@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -17,13 +18,18 @@
                 <hr>
             </div>
             <div class="container">
-                <div class="row">
+                <div class="row">                    
                     <div v-for="photo in photos" class="d-flex justify-content-center photo-frame">
-                        <img :src="photo.url" :title="photo.author">                        
+                        <img :src="photo.src">                        
                         <div class="transparent-box">
                             <div class="photo-info">
                                 <p>photo by <strong>{{ photo.author }}</strong></p>
                                 <p>visit <a :href="photo.unsplashUrl">unsplash</a></p>
+                            </div>
+                            <div class="d-flex justify-content-around photo-options">
+                                <i class="material-icons">favorite</i>
+                                <i class="material-icons">save</i>
+                                <i class="material-icons">refresh</i>
                             </div>
                         </div>
                     </div>
