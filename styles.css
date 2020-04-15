@@ -1,12 +1,52 @@
 img {
-    padding: 1%;
     -webkit-transform: scale(1);
     transform: scale(1);
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
 
-img:hover {
+.photo-frame {
+    box-sizing: content-box;    
+    margin: 1%;
+    overflow: hidden;
+    display: inline-block;
+    color: white;
+    position: relative;
+    background-color: white;
+}
+
+.transparent-box {
+    height: 250px;
+    width: 350px;
+    background-color:rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.photo-info {
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    opacity: 0.0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.photo-info > p:nth-child(2) {
+    font-size: 0.9em;
+  }
+
+.photo-frame:hover .transparent-box {
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.photo-frame:hover img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+.photo-frame:hover .photo-info {
+    transform: translateY(-20px);
+    opacity: 1.0;
 }

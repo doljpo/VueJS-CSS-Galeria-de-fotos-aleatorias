@@ -17,7 +17,15 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <img v-for="photo in photos" :src="photo.url" :title="photo.title" class="col-3" />
+                    <div v-for="photo in photos" class="d-flex justify-content-center photo-frame">
+                        <img :src="photo.url" :title="photo.author">                        
+                        <div class="transparent-box">
+                            <div class="photo-info">
+                                <p>photo by <strong>{{ photo.author }}</strong></p>
+                                <p>see it on <a :href="photo.unsplashUrl">unsplash</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row justify-content-around mt-5">
                     <button class="btn btn-primary" @click="getNewListOfPhotos()">Atualizar Fotos</button>
@@ -26,7 +34,7 @@
                 </div>
             </div>
             <div class="container">
-                <p>Galeria de imagens aleatórias. Imagens são consumidas através de
+                <p>Galeria de imagens aleatórias. Imagens são obtidas através da API
                     <a href="https://picsum.photos/ ">Picsum</a>.
                     <br>
                     Fonte hospedado no github: <a href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
