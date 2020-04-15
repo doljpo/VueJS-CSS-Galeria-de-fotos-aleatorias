@@ -17,10 +17,10 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <img v-for="photo in photos" :src="photo.url" :alt="photo.alt" class="col-3" />
+                    <img v-for="photo in photos" :src="photo.url" :title="photo.title" class="col-3" />
                 </div>
                 <div class="row justify-content-around mt-5">
-                    <button class="btn btn-primary" @click="atualizar()">Atualizar Fotos</button>
+                    <button class="btn btn-primary" @click="getNewListOfPhotos()">Atualizar Fotos</button>
                     <button class="btn btn-secondary">Apenas Favoritas</button>
                     <button class="btn btn-success">Alterar o Tema</button>
                 </div>
