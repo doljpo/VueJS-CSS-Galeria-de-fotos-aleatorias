@@ -18,14 +18,10 @@ const app = new Vue({
 
     methods: {
         getNewListOfPhotos() {
-            console.log('trying to get new photos...');
-            
             this.requestNewPhotos(typeOfAction.UPDATE);
         },
 
         requestNewPhotos(action) {
-            console.log('getting new photos...');
-            
             fetch('https://picsum.photos/v2/list?limit=' + this.numberOfPhotos + '&page=' + ((Math.round(Math.random() * 123)) + 1))
                 .then(response => response.json())
                 .then(result => {
@@ -34,18 +30,10 @@ const app = new Vue({
                     }
                     else {
                         for (let index = 0; index < this.numberOfPhotos; index++) {
-                            this.photos[index].link = 'https://picsum.photos/id/' + result[index].id + '/350/250';
-                            this.photos[index].author = result[index].author;
-                            this.photos[index].unsplashUrl = result[index].url;
-                            this.photos[index].download_url = result[index].download_url;
+                            this.updatePhoto(index, result[index]);
                         }
                     }
                 });
-
-
-            if (action == action.PUSH) {
-
-            }
         },
 
         pushNewPhotos(result) {
@@ -54,22 +42,25 @@ const app = new Vue({
                     href: '#' + index,
                     id: index,
                     link: 'https://picsum.photos/id/' + result[index].id + '/350/250',
+                    author: result[index].author,
                     unsplashUrl: result[index].url,
-                    download_url: result[index].download_url
+                    download_url: result[index].download_url,
+                    isFavorite: false
                 });
-
-                // this.updatePhoto(index, result[index]);
             }
         },
 
-        // updatePhoto(index, photo) {
-            
-        //     this.photos[index].link = 'https://picsum.photos/id/' + photo.id + '/350/250';
-        //     this.photos[index].author = photo.author;
-        //     this.photos[index].unsplashUrl = photo.url;
-        //     this.photos[index].download_url = photo.download_url;
-        //     console.log(this.photos[index].link);
-        // },
+        updatePhoto(index, newPhoto) {            
+            this.photos[index].link = 'https://picsum.photos/id/' + newPhoto.id + '/350/250';
+            this.photos[index].author = newPhoto.author;
+            this.photos[index].unsplashUrl = newPhoto.url;
+            this.photos[index].download_url = newPhoto.download_url;            
+        },
+
+        favoritePhoto(photo) {
+            this.photos[photo.id].isFavorite = !photo.isFavorite;
+            console.log(this.photos[photo.id].id + ' agora eh favorita? = ' + this.photos[photo.id].isFavorite);            
+        },
 
         downloadPhoto(photo) {
             fetch(photo.download_url)

@@ -21,21 +21,22 @@
             <div class="container">
                 <div class="row">
                     <div v-for="photo in photos" class="d-flex justify-content-center photo-frame">
-                        <img :src="photo.link" :alt="photo.author">
+                        <img :src="photo.link">
                         <div class="transparent-box" @click="showEnlargedPhoto(photo.href)">
                             <div class="photo-info">
                                 <p>photo by <strong>{{ photo.author }}</strong></p>
                                 <p>visit <a @click.stop="" target="_blank" :href="photo.unsplashUrl">unsplash</a></p>
                             </div>
                             <div class="d-flex justify-content-around photo-options">
-                                <i class="material-icons" @click.stop="showMsg('favorite')">favorite</i>
+                                <i :class="{ favorite : photo.isFavorite }" class="material-icons"
+                                    @click.stop="favoritePhoto(photo)">favorite</i>
                                 <i class="material-icons" @click.stop="downloadPhoto(photo)">save</i>
                                 <i class="material-icons" @click.stop="getNewPhoto(photo)">refresh</i>
                             </div>
-                        </div>    
+                        </div>
                         <a href="#_" class="lightbox-target" :id="photo.id">
                             <img :src="photo.download_url">
-                        </a>                
+                        </a>
                     </div>
                 </div>
                 <div class="row justify-content-around mt-5">

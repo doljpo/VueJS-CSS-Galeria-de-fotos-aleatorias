@@ -80,3 +80,7 @@ img {
     transform: translateY(20px);
     opacity: 1.0;
 }
+
+.favorite {
+    color: red !important;
+}
