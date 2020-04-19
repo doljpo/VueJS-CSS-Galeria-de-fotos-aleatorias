@@ -13,11 +13,23 @@ const app = new Vue({
     },
 
     created() {
+        for (let index = 0; index < this.numberOfPhotos; index++) {
+            this.photos.push({
+                href: '#' + index,
+                id: index,
+                isFavorite: false,
+                showLoading: true
+            });
+        }
         this.requestNewPhotos(typeOfAction.PUSH);
     },
 
     methods: {
         getNewListOfPhotos() {
+            this.photos.forEach(photo => {
+                photo.showLoading = true;
+            });
+
             this.requestNewPhotos(typeOfAction.UPDATE);
         },
 
@@ -26,7 +38,10 @@ const app = new Vue({
                 .then(response => response.json())
                 .then(result => {
                     if (action == typeOfAction.PUSH) {
-                        this.pushNewPhotos(result);
+                        // this.pushNewPhotos(result);
+                        for (let index = 0; index < this.numberOfPhotos; index++) {
+                            this.updatePhoto(index, result[index]);
+                        }                        
                     }
                     else {
                         for (let index = 0; index < this.numberOfPhotos; index++) {
@@ -34,21 +49,25 @@ const app = new Vue({
                         }
                     }
                 });
+
+                this.photos.forEach(photo => {
+                    photo.showLoading = false;
+                });                
         },
 
-        pushNewPhotos(result) {
-            for (let index = 0; index < this.numberOfPhotos; index++) {
-                this.photos.push({
-                    href: '#' + index,
-                    id: index,
-                    link: 'https://picsum.photos/id/' + result[index].id + '/350/250',
-                    author: result[index].author,
-                    unsplashUrl: result[index].url,
-                    download_url: result[index].download_url,
-                    isFavorite: false
-                });
-            }
-        },
+        // pushNewPhotos(result) {
+        //     for (let index = 0; index < this.numberOfPhotos; index++) {
+        //         this.photos.push({
+        //             href: '#' + index,
+        //             id: index,
+        //             link: 'https://picsum.photos/id/' + result[index].id + '/350/250',
+        //             author: result[index].author,
+        //             unsplashUrl: result[index].url,
+        //             download_url: result[index].download_url,
+        //             isFavorite: false
+        //         });
+        //     }
+        // },
 
         updatePhoto(index, newPhoto) {
             if (this.photos[index].isFavorite)
@@ -58,6 +77,7 @@ const app = new Vue({
             this.photos[index].author = newPhoto.author;
             this.photos[index].unsplashUrl = newPhoto.url;
             this.photos[index].download_url = newPhoto.download_url;
+            this.photos[index].showLoading = false;
         },
 
         favoritePhoto(photo) {
@@ -83,8 +103,12 @@ const app = new Vue({
             window.location = href;
         },
 
-        showMsg(msg) {
-            alert(msg);
+        getNewPhoto(photo) {
+            fetch('https://picsum.photos/v2/list?limit=1&page=' + ((Math.round(Math.random() * 992)) + 1))
+                .then(response => response.json())
+                .then(result => {
+                    this.updatePhoto(photo.id, result[0]);
+                });
         }
     }
 });

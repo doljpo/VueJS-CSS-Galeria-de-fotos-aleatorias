@@ -6,6 +6,7 @@
     <title>Random Photos Gallery</title>
     <link rel="stylesheet" href="./style/styles.css">
     <link rel="stylesheet" href="./style/lightbox_effect.css">
+    <link rel="stylesheet" href="./style/infinity_loader.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +22,7 @@
             <div class="container">
                 <div class="row">
                     <div v-for="photo in photos" class="d-flex justify-content-center photo-frame">
-                        <img :src="photo.link">
+                        <img :class="{ 'background-loading' : photo.showLoading }" :src="photo.link">
                         <div class="transparent-box" @click="showEnlargedPhoto(photo.href)">
                             <div class="photo-info">
                                 <p>photo by <strong>{{ photo.author }}</strong></p>
@@ -37,6 +38,28 @@
                         <a href="#_" class="lightbox-target" :id="photo.id">
                             <img :src="photo.download_url">
                         </a>
+                        <!-- Begin: Loading Animation -->
+                        <div v-if="photo.showLoading" class="transparent-loader">
+                            <div class="infinityChrome">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <!-- Stuff -->
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                                        <feBlend in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+                            <!-- dribbble -->
+                            <a class="dribbble" href="./assets/shot.mp4" target="_blank"></a>
+                        </div>
+                        <!-- End: Loading Animation -->
                     </div>
                 </div>
                 <div class="row justify-content-around mt-5">
@@ -49,7 +72,8 @@
                 <p>Galeria de imagens aleatórias. Imagens são obtidas através da API
                     <a target="_blank" href="https://picsum.photos/ ">Picsum</a>.
                     <br>
-                    Fonte hospedado no github: <a target="_blank" href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
+                    Fonte hospedado no github: <a target="_blank"
+                        href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
                 </p>
             </div>
         </div>
