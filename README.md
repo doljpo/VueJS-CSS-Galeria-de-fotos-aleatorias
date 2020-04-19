@@ -13,4 +13,4 @@ Efeito gradiente de fundo criado em:
     https://cssgradient.io/
 
 Função original de download de imagens:
-    https://stackoverflow.com/questions/54343169/how-to-download-images-without-displaying-them-using-vue-js
+    https://stackoverflow.com/a/54345008/11599158
