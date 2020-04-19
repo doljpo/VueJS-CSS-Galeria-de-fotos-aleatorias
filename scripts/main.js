@@ -7,7 +7,7 @@ const app = new Vue({
     el: '#app',
     data: {
         actions: typeOfAction,
-        title: 'Vue Random Gallery',
+        title: 'Random Photos Gallery',
         numberOfPhotos: 6,
         photos: []
     },
@@ -50,16 +50,25 @@ const app = new Vue({
             }
         },
 
-        updatePhoto(index, newPhoto) {            
+        updatePhoto(index, newPhoto) {
+            if (this.photos[index].isFavorite)
+                return;
+
             this.photos[index].link = 'https://picsum.photos/id/' + newPhoto.id + '/350/250';
             this.photos[index].author = newPhoto.author;
             this.photos[index].unsplashUrl = newPhoto.url;
-            this.photos[index].download_url = newPhoto.download_url;            
+            this.photos[index].download_url = newPhoto.download_url;
         },
 
         favoritePhoto(photo) {
             this.photos[photo.id].isFavorite = !photo.isFavorite;
-            console.log(this.photos[photo.id].id + ' agora eh favorita? = ' + this.photos[photo.id].isFavorite);            
+        },
+
+        saveAllFavorites() {
+            this.photos.forEach(photo => {
+                if (photo.isFavorite)
+                    this.downloadPhoto(photo);
+            });
         },
 
         downloadPhoto(photo) {

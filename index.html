@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue Random Gallery</title>
+    <title>Random Photos Gallery</title>
     <link rel="stylesheet" href="./style/styles.css">
     <link rel="stylesheet" href="./style/lightbox_effect.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -41,15 +41,15 @@
                 </div>
                 <div class="row justify-content-around mt-5">
                     <button class="btn btn-primary" @click="getNewListOfPhotos()">Atualizar Fotos</button>
-                    <button class="btn btn-secondary">Apenas Favoritas</button>
+                    <button class="btn btn-secondary" @click="saveAllFavorites()">Salvar Favoritas</button>
                     <button class="btn btn-success">Alterar o Tema</button>
                 </div>
             </div>
             <div class="container">
                 <p>Galeria de imagens aleatórias. Imagens são obtidas através da API
-                    <a href="https://picsum.photos/ ">Picsum</a>.
+                    <a target="_blank" href="https://picsum.photos/ ">Picsum</a>.
                     <br>
-                    Fonte hospedado no github: <a href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
+                    Fonte hospedado no github: <a target="_blank" href="https://github.com/doljpo/vue-rnd-gallery">vue-rnd-gallery</a>
                 </p>
             </div>
         </div>
