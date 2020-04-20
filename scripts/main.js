@@ -92,11 +92,13 @@ const app = new Vue({
         },
 
         getNewPhoto(photo) {
+            photo.showLoading = true;
+
             fetch('https://picsum.photos/v2/list?limit=1&page=' + ((Math.round(Math.random() * 992)) + 1))
                 .then(response => response.json())
                 .then(result => {
                     this.updatePhoto(photo.id, result[0]);
                 });
-        }
+        }        
     }
 });
