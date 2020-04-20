@@ -36,8 +36,8 @@ img {
 }
 
 .transparent-loader {
-    height: 250px;
-    width: 350px;
+    height: 100%;
+    width: 100%; 
     background-color:rgba(0, 0, 0, 0);
     position: absolute;
     top: 0;
@@ -104,6 +104,9 @@ img {
     text-align: center;
     transition: opacity .5s ease-in-out;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hidden-loading {
@@ -112,6 +115,11 @@ img {
 
 .background-loading {
     background-color: black;
+    width: 350px; 
+    height: 250px;
+}
+
+.photo-holder {
     width: 350px; 
     height: 250px;
 }

@@ -22,7 +22,7 @@ const app = new Vue({
                 if (!photo.isFavorite)
                     photo.showLoading = true;
             });
-            
+
             this.requestNewPhotos(typeOfAction.UPDATE);
         },
 
@@ -39,7 +39,7 @@ const app = new Vue({
                             this.updatePhoto(index, result[index]);
                         }
                     }
-                });        
+                });
         },
 
         pushNewPhotos(result) {
@@ -51,7 +51,8 @@ const app = new Vue({
                     author: result[index].author,
                     unsplashUrl: result[index].url,
                     download_url: result[index].download_url,
-                    isFavorite: false
+                    isFavorite: false,
+                    showLoading: false
                 });
             }
         },
