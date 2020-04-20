@@ -18,12 +18,20 @@ const app = new Vue({
 
     methods: {
         getNewListOfPhotos() {
+            var doRequest = false;
+
             this.photos.forEach(photo => {
-                if (!photo.isFavorite)
+                if (!photo.isFavorite) {
                     photo.showLoading = true;
+                    doRequest = true;
+                }
             });
 
-            this.requestNewPhotos(typeOfAction.UPDATE);
+            if (doRequest) {
+                this.requestNewPhotos(typeOfAction.UPDATE);
+            } else {
+                alert('Todas fotos marcadas como favoritas. Nenhuma será substituída.');
+            }
         },
 
         requestNewPhotos(action) {
@@ -92,13 +100,17 @@ const app = new Vue({
         },
 
         getNewPhoto(photo) {
-            photo.showLoading = true;
+            if (photo.isFavorite) {
+                alert('Foto marcada como favorita não pode ser substituída.');
+            } else {
+                photo.showLoading = true;
 
-            fetch('https://picsum.photos/v2/list?limit=1&page=' + ((Math.round(Math.random() * 992)) + 1))
-                .then(response => response.json())
-                .then(result => {
-                    this.updatePhoto(photo.id, result[0]);
-                });
-        }        
+                fetch('https://picsum.photos/v2/list?limit=1&page=' + ((Math.round(Math.random() * 992)) + 1))
+                    .then(response => response.json())
+                    .then(result => {
+                        this.updatePhoto(photo.id, result[0]);
+                    });
+            }
+        }
     }
 });
