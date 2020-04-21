@@ -1,5 +1,22 @@
 # vue-rnd-gallery
 
+Galeria de imagens obtidas aleatoriamente.
+
+A galeria possui apenas uma página que carrega 6 fotos aleatórias utilizando picsum (que busca imagens no site unsplash).
+
+Possui as funções:
+- Na própria foto (on hover):
+* Favoritar: Marca a foto como favorita. Foto favorita não pode ser substituída;
+* Salvar: Faz o download da foto;
+* Substituir: Troca a foto, desde que não seja favorita;
+
+* Atualizar Fotos: Busca novas fotos substituindo as que não foram marcadas como favoritas;
+* Salvar Favoritas: Realiza o download de todas fotos marcadas como favoritas. O browser pode solicitar permissão para baixar múltiplas fotos.
+* Alterar Fundo: Altera o gradiente de background da página aleatoriamente.
+
+
+Consiste em uma página html (index.html) que utiliza vue.js através de uma instância Vue no arquivo main.js.
+
 Efeito loading:
     https://dribbble.com/shots/5557955-Infinity-Loader
 
