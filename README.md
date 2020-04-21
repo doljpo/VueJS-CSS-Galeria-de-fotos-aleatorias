@@ -26,8 +26,5 @@ Fotos obtidas através da api picsum:
 Fotos da Picsum são originalmente obtidas no site unsplash:
     https://unsplash.com/
 
-Efeito gradiente de fundo criado em:
-    https://cssgradient.io/
-
 Função original de download de imagens:
     https://stackoverflow.com/a/54345008/11599158
