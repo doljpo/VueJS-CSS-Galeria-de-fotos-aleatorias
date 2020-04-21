@@ -7,7 +7,7 @@ const app = new Vue({
     el: '#app',
     data: {
         actions: typeOfAction,
-        title: 'Random Photos Gallery',
+        title: 'Galeria Aleatória',
         numberOfPhotos: 6,
         photos: []
     },
@@ -81,10 +81,22 @@ const app = new Vue({
         },
 
         saveAllFavorites() {
+            var doDownload = false;
+
             this.photos.forEach(photo => {
-                if (photo.isFavorite)
-                    this.downloadPhoto(photo);
+                if (photo.isFavorite) {
+                    doDownload = true;
+                }
             });
+
+            if (doDownload) {
+                this.photos.forEach(photo => {
+                    if (photo.isFavorite)
+                        this.downloadPhoto(photo);
+                });
+            } else {
+                alert('Nenhuma foto marcada como favorita.');
+            }
         },
 
         downloadPhoto(photo) {
@@ -111,6 +123,33 @@ const app = new Vue({
                         this.updatePhoto(photo.id, result[0]);
                     });
             }
+        },
+
+        switchTheme() {
+            var rgbLeft = this.getRandomColor() + ' 15%';
+            var rgbCenter = this.getRandomColor() + ' 35%';
+            var rgbRight = this.getRandomColor() + ' 50%';
+            var degree = ((Math.round(Math.random() * 359)) + 1);
+            
+            var linearGradient = 'linear-gradient(' + degree + 'deg, ' + rgbLeft + ', ' + rgbCenter + ', ' + rgbRight + ')';
+
+            if (document.getElementById('backgroundOne').style.opacity == 1) {
+                document.getElementById('backgroundTwo').style.background = linearGradient;
+                document.getElementById('backgroundTwo').style.opacity = 1;
+                document.getElementById('backgroundOne').style.opacity = 0;
+            } else {
+                document.getElementById('backgroundOne').style.background = linearGradient;
+                document.getElementById('backgroundOne').style.opacity = 1;
+                document.getElementById('backgroundTwo').style.opacity = 0;
+            }
+        },
+
+        getRandomColor() {
+            var r = ((Math.round(Math.random() * 254)) + 1);
+            var g = ((Math.round(Math.random() * 254)) + 1);
+            var b = ((Math.round(Math.random() * 254)) + 1);
+
+            return 'rgba(' + r + ',' + g + ',' + b + ',1) ';
         }
     }
 });

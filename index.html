@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Photos Gallery</title>
-    <link rel="stylesheet" href="./style/styles.css">
+    <title>Galeria Aleatória</title>
+    <link rel="stylesheet" href="./style/styles.css">    
     <link rel="stylesheet" href="./style/lightbox_effect.css">
     <link rel="stylesheet" href="./style/infinity_loader.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <div id="backgroundOne" class="gradient"></div>
+    <div id="backgroundTwo" class="gradient"></div>
     <div id="app">
         <div class="d-flex flex-column justify-content-around" style="height: 100vh">
             <div class="container">
@@ -65,7 +67,7 @@
                 <div class="row justify-content-around mt-5">
                     <button class="btn btn-primary" @click="getNewListOfPhotos()">Atualizar Fotos</button>
                     <button class="btn btn-secondary" @click="saveAllFavorites()">Salvar Favoritas</button>
-                    <button class="btn btn-success">Alterar o Tema</button>
+                    <button class="btn btn-success" @click="switchTheme()">Alterar o Tema</button>
                 </div>
             </div>
             <div class="container">

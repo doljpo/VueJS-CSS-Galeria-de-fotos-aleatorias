@@ -1,9 +1,3 @@
-body {
-    background: #D3CCE3;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */   
-}
-
 h1 {
     font-family: 'Ubuntu', sans-serif;
 }
@@ -13,6 +7,14 @@ img {
     transform: scale(1);
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+}
+
+button {
+    height: 50px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+    font-weight: bold;
 }
 
 .photo-frame {
@@ -122,4 +124,14 @@ img {
 .photo-holder {
     width: 350px; 
     height: 250px;
+}
+
+.gradient {
+    width: 100%; 
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    transition: all 0.5s linear;
+    opacity: 1;
+    background: linear-gradient(90deg, rgb(233, 248, 247) 0%, rgba(9,121,105,1) 32%, rgba(0,212,255,1) 100%);        
 }
