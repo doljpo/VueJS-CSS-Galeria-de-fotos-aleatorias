@@ -127,7 +127,7 @@ img {
     z-index: -1;
     transition: all 0.5s linear;
     opacity: 1;
-    background: linear-gradient(90deg, rgb(233, 248, 247) 0%, rgba(9,121,105,1) 32%, rgba(0,212,255,1) 100%);        
+    background: linear-gradient(to right, #E9E4F0, #D3CCE3);       
 }
 
 .animate
