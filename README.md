@@ -5,13 +5,12 @@ Galeria de imagens obtidas aleatoriamente.
 A galeria possui apenas uma página que carrega 6 fotos aleatórias utilizando picsum (que busca imagens no site unsplash).
 Consiste em uma página html (index.html) que utiliza vue.js através de uma instância Vue no arquivo main.js.
 
-Possui as funções:
-Na foto (on hover):
+Funções nas fotos (on hover):
 * Favoritar: Marca a foto como favorita. Foto favorita não pode ser substituída;
 * Salvar: Faz o download da foto;
 * Substituir: Troca a foto, desde que não seja favorita;
 
-Na página (botões):
+Funções na página (botões):
 * Atualizar Fotos: Busca novas fotos substituindo as que não foram marcadas como favoritas;
 * Salvar Favoritas: Realiza o download de todas fotos marcadas como favoritas. O browser pode solicitar permissão para baixar múltiplas fotos.
 * Alterar Fundo: Altera o gradiente de background da página aleatoriamente.
