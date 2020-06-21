@@ -1,4 +1,4 @@
-# vue-rnd-gallery
+# Vue Random Image Gallery
 
 Galeria de imagens obtidas aleatoriamente.
 
